@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50">
+  <g id="chip_25" transform="translate(0 -58.81)">
+    <circle cx="25" cy="83.81" r="24.74" fill="#009e00" stroke="#000006" stroke-width=".52"/>
+    <ellipse cx="25" cy="83.81" rx="20.21" ry="20.09" fill="none" stroke="#fff" stroke-width="4.11" stroke-dasharray="12.31663134,12.31663134"/>
+    <g style="line-height:1.25">
+      <path d="M13.44 80.96q.17-4.48 5.67-4.48 2.45 0 3.98 1.06 1.53 1.05 1.53 2.72 0 2.4-3.64 3.9l-2.42.98q-1.58.64-2.26 1.24-.68.6-.85 1.41h9.05v1.59H13.05q.14-2.13 1.14-3.28 1-1.16 3.69-2.3l2.23-.95q2.33-1 2.33-2.55 0-1.04-.97-1.73t-2.43-.69q-3.23 0-3.47 3.08zm23.84-4.48v1.58h-7.16l-.68 3.6q1.43-.78 3.18-.78 2.47 0 4 1.2 1.55 1.19 1.55 3.1 0 2.03-1.65 3.32-1.65 1.3-4.24 1.3-1 0-1.85-.17-.82-.16-1.38-.38-.53-.24-1-.6-.43-.38-.67-.65-.22-.3-.44-.71-.2-.44-.24-.6l-.12-.48h2.13q.75 2.17 3.52 2.17 1.75 0 2.74-.8 1.02-.8 1.02-2.19 0-1.43-1.02-2.25-1.02-.84-2.74-.84-1 0-1.7.28-.7.25-1.45.92H27.1l1.29-7.02z" style="-inkscape-font-specification:'FreeSans, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start" aria-label="25" font-weight="400" font-size="21.29" letter-spacing="0" word-spacing="0" font-family="FreeSans" fill="#fff" stroke-width=".53"/>
+    </g>
+  </g>
+</svg>
