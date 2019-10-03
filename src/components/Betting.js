@@ -10,6 +10,12 @@ const BetArea = styled.div`
   font-size: 2rem;
 `;
 
+const GoldenCirle = styled.span`
+  padding: 2rem;
+  border-radius: 1rem;
+  border: 0.2rem solid gold;
+`;
+
 const GridChips = styled.div`
   grid-area: chips;
   justify-self: center;
@@ -25,40 +31,64 @@ const SvgChip = styled.svg`
   box-shadow: 3px 3px 5px 0px rgba(0, 0, 0, 0.75);
 `;
 
-const GoldenCirle = styled.span`
-  padding: 2rem;
-  border-radius: 1rem;
-  border: 0.2rem solid gold;
-`;
-
-export default function Betting() {
+export default function Betting(props) {
   return (
     <>
-      <BetArea>
-        <GoldenCirle>$5</GoldenCirle>
+      <BetArea onClick={props.handleClearBet}>
+        <GoldenCirle>${props.currentBet}</GoldenCirle>
       </BetArea>
       <GridChips>
-        <SvgChip className="chip" id="chip_1" viewBox="0 0 50 50">
+        <SvgChip
+          onClick={e => props.handleChipsButtons(1)}
+          className="chip"
+          id="chip_1"
+          viewBox="0 0 50 50"
+        >
           <use href={`${chipsSprite}#chip_1`} width="100%" height="100%" />
         </SvgChip>
 
-        <SvgChip className="chip" id="chip_5" viewBox="0 0 50 50">
+        <SvgChip
+          onClick={e => props.handleChipsButtons(5)}
+          className="chip"
+          id="chip_5"
+          viewBox="0 0 50 50"
+        >
           <use href={`${chipsSprite}#chip_5`} width="100%" height="100%" />
         </SvgChip>
 
-        <SvgChip className="chip" id="chip_25" viewBox="0 0 50 50">
+        <SvgChip
+          onClick={e => props.handleChipsButtons(25)}
+          className="chip"
+          id="chip_25"
+          viewBox="0 0 50 50"
+        >
           <use href={`${chipsSprite}#chip_25`} width="100%" height="100%" />
         </SvgChip>
 
-        <SvgChip className="chip" id="chip_100" viewBox="0 0 50 50">
+        <SvgChip
+          onClick={e => props.handleChipsButtons(100)}
+          className="chip"
+          id="chip_100"
+          viewBox="0 0 50 50"
+        >
           <use href={`${chipsSprite}#chip_100`} width="100%" height="100%" />
         </SvgChip>
 
-        <SvgChip className="chip" id="chip_500" viewBox="0 0 50 50">
+        <SvgChip
+          onClick={e => props.handleChipsButtons(500)}
+          className="chip"
+          id="chip_500"
+          viewBox="0 0 50 50"
+        >
           <use href={`${chipsSprite}#chip_500`} width="100%" height="100%" />
         </SvgChip>
 
-        <SvgChip className="chip" id="chip_1000" viewBox="0 0 50 50">
+        <SvgChip
+          onClick={e => props.handleChipsButtons(1000)}
+          className="chip"
+          id="chip_1000"
+          viewBox="0 0 50 50"
+        >
           <use href={`${chipsSprite}#chip_1000`} width="100%" height="100%" />
         </SvgChip>
       </GridChips>

@@ -23,14 +23,8 @@ export default function App() {
   const [playerCards, setPlayerCards] = useState([]);
   const [dealerPoints] = useState(99);
   const [playerPoints] = useState(99);
-  const [playerCash] = useState(100);
-  const [currentBet] = useState(50);
-  const outputProps = {
-    dealerPoints,
-    playerPoints,
-    playerCash,
-    currentBet,
-  };
+  const [playerCash, setPlayerCash] = useState(100);
+  const [currentBet, setCurrentBet] = useState(0);
 
   // TEMPORARY ----------------------------------------
   useEffect(() => {
@@ -50,10 +44,32 @@ export default function App() {
   }, [deck]);
   // TEMPORARY ----------------------------------------
 
+  const handleChipsButtons = val => {
+    if (playerCash >= val) {
+      setCurrentBet(currentBet + val);
+      setPlayerCash(playerCash - val);
+    }
+  };
+
+  const handleClearBet = () => {
+    setPlayerCash(playerCash + currentBet);
+    setCurrentBet(0);
+  };
+
+  const outputProps = {
+    dealerPoints,
+    playerPoints,
+    playerCash,
+  };
+  const bettingProps = {
+    handleChipsButtons,
+    handleClearBet,
+    currentBet,
+  };
   return (
     <>
       <GridContainer>
-        <Betting />
+        <Betting {...bettingProps} />
         <Input />
         <Output {...outputProps} />
         <DealerHand cards={dealerCards} />
