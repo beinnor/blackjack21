@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import Betting from './Betting';
 import DealerHand from './DealerHand';
 import PlayerHand from './PlayerHand';
+import Input from './Input';
 import Output from './Output';
 
 import { getDeck, shuffle } from '../helpers/deck';
@@ -14,34 +15,6 @@ const GridContainer = styled.div`
   grid-template-columns: 1fr 1fr 1fr 1fr;
   grid-template-rows: 1fr 1fr 1fr 1fr;
   grid-template-areas: 'dealerPoints dealerCards dealerCards dealerCards' 'playerPoints playerCards playerCards playerCards' 'leftButtons betArea betArea rightButtons' 'chips chips chips cash';
-`;
-
-const GridLeftButtons = styled.div`
-  grid-area: leftButtons;
-  justify-self: center;
-  align-self: center;
-`;
-
-const GridRightButtons = styled.div`
-  grid-area: rightButtons;
-  justify-self: center;
-  align-self: center;
-`;
-
-const HitButton = styled.button`
-  font-size: 2rem;
-`;
-const StandButton = styled.button`
-  font-size: 2rem;
-`;
-const DblDownButton = styled.button`
-  font-size: 2rem;
-`;
-const SplitButton = styled.button`
-  font-size: 2rem;
-`;
-const DealButton = styled.button`
-  font-size: 2rem;
 `;
 
 export default function App() {
@@ -81,18 +54,10 @@ export default function App() {
     <>
       <GridContainer>
         <Betting />
+        <Input />
         <Output {...outputProps} />
         <DealerHand cards={dealerCards} />
         <PlayerHand cards={playerCards} />
-        <GridLeftButtons>
-          <HitButton>Hit</HitButton>
-          <StandButton>Stand</StandButton>
-          <DealButton>Deal</DealButton>
-        </GridLeftButtons>
-        <GridRightButtons>
-          <SplitButton>Split</SplitButton>
-          <DblDownButton>Double Down</DblDownButton>
-        </GridRightButtons>
       </GridContainer>
     </>
   );
