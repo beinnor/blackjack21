@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import Betting from './Betting';
 import DealerHand from './DealerHand';
 import PlayerHand from './PlayerHand';
+import Output from './Output';
 
 import { getDeck, shuffle } from '../helpers/deck';
 
@@ -13,18 +14,6 @@ const GridContainer = styled.div`
   grid-template-columns: 1fr 1fr 1fr 1fr;
   grid-template-rows: 1fr 1fr 1fr 1fr;
   grid-template-areas: 'dealerPoints dealerCards dealerCards dealerCards' 'playerPoints playerCards playerCards playerCards' 'leftButtons betArea betArea rightButtons' 'chips chips chips cash';
-`;
-
-const GridDealerPoints = styled.div`
-  grid-area: dealerPoints;
-  justify-self: center;
-  align-self: center;
-`;
-
-const GridPlayerPoints = styled.div`
-  grid-area: playerPoints;
-  justify-self: center;
-  align-self: center;
 `;
 
 const GridLeftButtons = styled.div`
@@ -37,31 +26,6 @@ const GridRightButtons = styled.div`
   grid-area: rightButtons;
   justify-self: center;
   align-self: center;
-`;
-
-const GridCash = styled.div`
-  grid-area: cash;
-  justify-self: center;
-  align-self: center;
-  font-size: 2rem;
-`;
-
-const GoldenCirle = styled.span`
-  padding: 2rem;
-  border-radius: 1rem;
-  border: 0.2rem solid gold;
-`;
-
-const PointsStyle = styled.span`
-  background: grey;
-  color: darkred;
-  font-size: 2rem;
-  padding: 0.9rem;
-  border: 0.15rem solid black;
-  border-radius: 2rem;
-  -webkit-box-shadow: 3px 3px 5px 0px rgba(0, 0, 0, 0.75);
-  -moz-box-shadow: 3px 3px 5px 0px rgba(0, 0, 0, 0.75);
-  box-shadow: 3px 3px 5px 0px rgba(0, 0, 0, 0.75);
 `;
 
 const HitButton = styled.button`
@@ -84,6 +48,16 @@ export default function App() {
   const [deck] = useState(shuffle(getDeck()));
   const [dealerCards, setDealerCards] = useState([]);
   const [playerCards, setPlayerCards] = useState([]);
+  const [dealerPoints] = useState(99);
+  const [playerPoints] = useState(99);
+  const [playerCash] = useState(100);
+  const [currentBet] = useState(50);
+  const outputProps = {
+    dealerPoints,
+    playerPoints,
+    playerCash,
+    currentBet,
+  };
 
   // TEMPORARY ----------------------------------------
   useEffect(() => {
@@ -107,16 +81,8 @@ export default function App() {
     <>
       <GridContainer>
         <Betting />
-        <GridCash>
-          <GoldenCirle>$500</GoldenCirle>
-        </GridCash>
-        <GridDealerPoints>
-          <PointsStyle>10</PointsStyle>
-        </GridDealerPoints>
+        <Output {...outputProps} />
         <DealerHand cards={dealerCards} />
-        <GridPlayerPoints>
-          <PointsStyle>11</PointsStyle>
-        </GridPlayerPoints>
         <PlayerHand cards={playerCards} />
         <GridLeftButtons>
           <HitButton>Hit</HitButton>
