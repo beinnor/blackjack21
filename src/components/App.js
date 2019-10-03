@@ -1,8 +1,11 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 
-import cardsSprite from '../assets/svg-cards.svg';
-import chipsSprite from '../assets/chips_sprite.svg';
+import Betting from './Betting';
+import DealerHand from './DealerHand';
+import PlayerHand from './PlayerHand';
+
+import { getDeck, shuffle } from '../helpers/deck';
 
 const GridContainer = styled.div`
   height: 100vh;
@@ -18,19 +21,9 @@ const GridDealerPoints = styled.div`
   align-self: center;
 `;
 
-const GridDealerCards = styled.div`
-  grid-area: dealerCards;
-  align-self: center;
-`;
-
 const GridPlayerPoints = styled.div`
   grid-area: playerPoints;
   justify-self: center;
-  align-self: center;
-`;
-
-const GridPlayerCards = styled.div`
-  grid-area: playerCards;
   align-self: center;
 `;
 
@@ -40,21 +33,8 @@ const GridLeftButtons = styled.div`
   align-self: center;
 `;
 
-const BetArea = styled.div`
-  grid-area: betArea;
-  justify-self: center;
-  align-self: center;
-  font-size: 2rem;
-`;
-
 const GridRightButtons = styled.div`
   grid-area: rightButtons;
-  justify-self: center;
-  align-self: center;
-`;
-
-const GridChips = styled.div`
-  grid-area: chips;
   justify-self: center;
   align-self: center;
 `;
@@ -64,24 +44,6 @@ const GridCash = styled.div`
   justify-self: center;
   align-self: center;
   font-size: 2rem;
-`;
-
-const SvgChip = styled.svg`
-  width: 5rem;
-  height: 5rem;
-  border-radius: 2.5rem;
-  -webkit-box-shadow: 3px 3px 5px 0px rgba(0, 0, 0, 0.75);
-  -moz-box-shadow: 3px 3px 5px 0px rgba(0, 0, 0, 0.75);
-  box-shadow: 3px 3px 5px 0px rgba(0, 0, 0, 0.75);
-`;
-
-const SvgCard = styled.svg`
-  width: auto;
-  height: 11rem;
-  border-radius: 0.3rem;
-  -webkit-box-shadow: 3px 3px 5px 0px rgba(0, 0, 0, 0.75);
-  -moz-box-shadow: 3px 3px 5px 0px rgba(0, 0, 0, 0.75);
-  box-shadow: 3px 3px 5px 0px rgba(0, 0, 0, 0.75);
 `;
 
 const GoldenCirle = styled.span`
@@ -119,79 +81,43 @@ const DealButton = styled.button`
 `;
 
 export default function App() {
+  const [deck] = useState(shuffle(getDeck()));
+  const [dealerCards, setDealerCards] = useState([]);
+  const [playerCards, setPlayerCards] = useState([]);
+
+  // TEMPORARY ----------------------------------------
+  useEffect(() => {
+    let tempDealerCards = [];
+    let tempPlayerCards = [];
+
+    let firstDealerCard = deck.pop();
+    firstDealerCard.hidden = true;
+
+    tempDealerCards.push(firstDealerCard);
+    tempPlayerCards.push(deck.pop());
+    tempDealerCards.push(deck.pop());
+    tempPlayerCards.push(deck.pop());
+
+    setDealerCards(tempDealerCards);
+    setPlayerCards(tempPlayerCards);
+  }, [deck]);
+  // TEMPORARY ----------------------------------------
+
   return (
     <>
       <GridContainer>
-        <BetArea>
-          <GoldenCirle>$5</GoldenCirle>
-        </BetArea>
-        <GridChips>
-          <SvgChip className="chip" id="chip_1" viewBox="0 0 50 50">
-            <use href={`${chipsSprite}#chip_1`} width="100%" height="100%" />
-          </SvgChip>
-
-          <SvgChip className="chip" id="chip_5" viewBox="0 0 50 50">
-            <use href={`${chipsSprite}#chip_5`} width="100%" height="100%" />
-          </SvgChip>
-
-          <SvgChip className="chip" id="chip_25" viewBox="0 0 50 50">
-            <use href={`${chipsSprite}#chip_25`} width="100%" height="100%" />
-          </SvgChip>
-
-          <SvgChip className="chip" id="chip_100" viewBox="0 0 50 50">
-            <use href={`${chipsSprite}#chip_100`} width="100%" height="100%" />
-          </SvgChip>
-
-          <SvgChip className="chip" id="chip_500" viewBox="0 0 50 50">
-            <use href={`${chipsSprite}#chip_500`} width="100%" height="100%" />
-          </SvgChip>
-
-          <SvgChip className="chip" id="chip_1000" viewBox="0 0 50 50">
-            <use href={`${chipsSprite}#chip_1000`} width="100%" height="100%" />
-          </SvgChip>
-        </GridChips>
+        <Betting />
         <GridCash>
           <GoldenCirle>$500</GoldenCirle>
         </GridCash>
         <GridDealerPoints>
           <PointsStyle>10</PointsStyle>
         </GridDealerPoints>
-        <GridDealerCards>
-          <SvgCard
-            className="card dealerCard backCard"
-            id="card1"
-            viewBox="0 0 169.075 244.640"
-            fill="darkred"
-          >
-            <use href={`${cardsSprite}#back`} width="100%" height="100%" />
-          </SvgCard>
-          <SvgCard
-            className="card dealerCard"
-            id="card2"
-            viewBox="0 0 169.075 244.640"
-          >
-            <use href={`${cardsSprite}#club_jack`} width="100%" height="100%" />
-          </SvgCard>
-        </GridDealerCards>
+        <DealerHand cards={dealerCards} />
         <GridPlayerPoints>
           <PointsStyle>11</PointsStyle>
         </GridPlayerPoints>
-        <GridPlayerCards>
-          <SvgCard
-            className="card playerCard"
-            id="card3"
-            viewBox="0 0 169.075 244.640"
-          >
-            <use href={`${cardsSprite}#club_4`} width="100%" height="100%" />
-          </SvgCard>
-          <SvgCard
-            className="card playerCard"
-            id="card4"
-            viewBox="0 0 169.075 244.640"
-          >
-            <use href={`${cardsSprite}#diamond_7`} width="100%" height="100%" />
-          </SvgCard>
-        </GridPlayerCards>
+        <PlayerHand cards={playerCards} />
         <GridLeftButtons>
           <HitButton>Hit</HitButton>
           <StandButton>Stand</StandButton>
