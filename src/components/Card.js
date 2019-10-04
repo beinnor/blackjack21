@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 import cardsSprite from '../assets/svg-cards.svg';
 
-const SvgCard = styled.svg`
+const CardStyle = styled.svg`
   width: auto;
   height: 11rem;
   border-radius: 0.3rem;
@@ -15,24 +15,24 @@ const SvgCard = styled.svg`
 export default function Card(props) {
   if (props.card.hidden) {
     return (
-      <SvgCard viewBox="0 0 169.075 244.640">
+      <CardStyle viewBox="0 0 169.075 244.640">
         <use
           href={`${cardsSprite}#back`}
           width="100%"
           height="100%"
           fill="darkred"
         />
-      </SvgCard>
+      </CardStyle>
     );
   } else {
     return (
-      <SvgCard className="card dealerCard" viewBox="0 0 169.075 244.640">
+      <CardStyle className="card dealerCard" viewBox="0 0 169.075 244.640">
         <use
           href={`${cardsSprite}#${props.card.suit}_${props.card.rank}`}
           width="100%"
           height="100%"
         />
-      </SvgCard>
+      </CardStyle>
     );
   }
 }

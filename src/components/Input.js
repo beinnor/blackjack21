@@ -29,17 +29,43 @@ const DealButton = styled.button`
   font-size: 2rem;
 `;
 
-export default function Input() {
+const NewRoundButton = styled.button`
+  font-size: 2rem;
+`;
+
+export default function Input(props) {
+  const dealBtn = (
+    <DealButton onClick={props.handleDealButton}>Deal</DealButton>
+  );
+  const hitBtn = <HitButton onClick={props.handleHitButton}>Hit</HitButton>;
+  const standBtn = (
+    <StandButton onClick={props.handleStandButton}>Stand</StandButton>
+  );
+  const splitBtn = (
+    <SplitButton onClick={props.handleSplitButton}>Split</SplitButton>
+  );
+  const newRoundBtn = (
+    <NewRoundButton onClick={props.handleNewRoundButton}>
+      New Round
+    </NewRoundButton>
+  );
+  const dblDownBtn = (
+    <DblDownButton onClick={props.handleDblDownButton}>
+      Double Down
+    </DblDownButton>
+  );
+
   return (
     <>
       <GridLeftButtons>
-        <HitButton>Hit</HitButton>
-        <StandButton>Stand</StandButton>
-        <DealButton>Deal</DealButton>
+        {!props.buttonState.dealDisabled ? dealBtn : null}
+        {!props.buttonState.hitDisabled ? hitBtn : null}
+        {!props.buttonState.standDisabled ? standBtn : null}
+        {!props.buttonState.newRoundDisabled ? newRoundBtn : null}
       </GridLeftButtons>
       <GridRightButtons>
-        <SplitButton>Split</SplitButton>
-        <DblDownButton>Double Down</DblDownButton>
+        {!props.buttonState.splitDisabled ? splitBtn : null}
+        {!props.buttonState.dblDownDisabled ? dblDownBtn : null}
       </GridRightButtons>
     </>
   );
