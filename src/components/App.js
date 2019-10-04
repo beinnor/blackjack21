@@ -42,10 +42,6 @@ export default function App() {
   const [winnerState, setWinnerState] = useState(null);
   const [message, setMessage] = useState('');
 
-  useEffect(() => {
-    console.log(`Message: ${message}`);
-  }, [message]);
-
   // Check for naturals, e.g. dealer or player has 21 on first deal
   useEffect(() => {
     if (gameState === GAMESTATE.CHECKWINNER) {
@@ -65,17 +61,36 @@ export default function App() {
         setWinnerState(WINNER.DEALER);
       } else {
         setGameState(GAMESTATE.PLAYERTURN);
-        setButtonState({
-          dealDisabled: true,
-          hitDisabled: false,
-          standDisabled: false,
-          splitDisabled: true,
-          dblDownDisabled: true,
-          newRoundDisabled: true,
-        });
+        if (playerCash >= currentBet * 2) {
+          setButtonState({
+            dealDisabled: true,
+            hitDisabled: false,
+            standDisabled: false,
+            splitDisabled: true,
+            dblDownDisabled: false,
+            newRoundDisabled: true,
+          });
+        } else {
+          setButtonState({
+            dealDisabled: true,
+            hitDisabled: false,
+            standDisabled: false,
+            splitDisabled: true,
+            dblDownDisabled: true,
+            newRoundDisabled: true,
+          });
+        }
       }
     }
-  }, [gameState, playerPoints, dealerPoints, setWinnerState, dealerCards]);
+  }, [
+    gameState,
+    playerPoints,
+    dealerPoints,
+    setWinnerState,
+    dealerCards,
+    currentBet,
+    playerCash,
+  ]);
 
   useEffect(() => {
     if (gameState === GAMESTATE.DECLAREWINNER) {
@@ -228,7 +243,38 @@ export default function App() {
 
   const handleSplitButton = () => {};
 
-  const handleDblDownButton = () => {};
+  const handleDblDownButton = () => {
+    // 1: double bet
+    const originalBet = currentBet;
+    setCurrentBet(originalBet * 2);
+    setPlayerCash(playerCash - originalBet);
+
+    // 2: take one card
+    let tempPlayerCards = playerCards;
+
+    tempPlayerCards.push(deck.pop());
+
+    setPlayerCards(tempPlayerCards);
+
+    const tempPlayerPoints = calcScore(tempPlayerCards);
+
+    setPlayerPoints(tempPlayerPoints);
+
+    if (tempPlayerPoints > 21) {
+      setGameState(GAMESTATE.DECLAREWINNER);
+      setWinnerState(WINNER.DEALER);
+      setButtonState({
+        dealDisabled: true,
+        hitDisabled: true,
+        standDisabled: true,
+        splitDisabled: true,
+        dblDownDisabled: true,
+        newRoundDisabled: false,
+      });
+    }
+    // 3. change to dealerturn
+    setGameState(GAMESTATE.DEALERTURN);
+  };
 
   const handleNewRoundButton = () => {
     switch (winnerState) {
@@ -276,6 +322,15 @@ export default function App() {
     setCurrentBet(0);
   };
 
+  const handleClearMessage = () => {
+    setMessage('');
+  };
+
+  const messageProps = {
+    message,
+    handleClearMessage,
+  };
+
   const inputProps = {
     buttonState,
     handleDealButton,
@@ -301,7 +356,7 @@ export default function App() {
   return (
     <>
       <GridContainer>
-        <Message message={message} />
+        <Message {...messageProps} />
         <Betting {...bettingProps} />
         <Input {...inputProps} />
         <Output {...outputProps} />

@@ -14,8 +14,10 @@ const MessageWrapper = styled.span`
   background-color: rgba(0, 0, 0, 0.8);
 `;
 
-export default function Message({ message }) {
-  const showMessage = <MessageWrapper>{message}</MessageWrapper>;
+export default function Message({ message, handleClearMessage }) {
+  const showMessage = (
+    <MessageWrapper onClick={handleClearMessage}>{message}</MessageWrapper>
+  );
 
   return <>{message ? showMessage : null}</>;
 }
