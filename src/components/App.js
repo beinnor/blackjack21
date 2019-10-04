@@ -108,6 +108,28 @@ export default function App() {
   }, [gameState, winnerState, dealerCards]);
 
   useEffect(() => {
+    if (gameState === GAMESTATE.BET && currentBet === 0) {
+      setButtonState({
+        dealDisabled: true,
+        hitDisabled: true,
+        standDisabled: true,
+        splitDisabled: true,
+        dblDownDisabled: true,
+        newRoundDisabled: true,
+      });
+    } else if (gameState === GAMESTATE.BET && currentBet > 0) {
+      setButtonState({
+        dealDisabled: false,
+        hitDisabled: true,
+        standDisabled: true,
+        splitDisabled: true,
+        dblDownDisabled: true,
+        newRoundDisabled: true,
+      });
+    }
+  }, [gameState, currentBet]);
+
+  useEffect(() => {
     if (gameState === GAMESTATE.DEALERTURN) {
       let tempDealerCards = dealerCards;
       let tempDealerPoints = calcFullScore(tempDealerCards);
