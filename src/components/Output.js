@@ -1,6 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
 
+import { GAMESTATE } from '../helpers/states';
+
 const GridCash = styled.div`
   grid-area: cash;
   justify-self: center;
@@ -43,18 +45,25 @@ export default function Output({
   playerPoints,
   playerCash,
   currentBet,
+  gameState,
 }) {
-  return (
+  const points = (
     <>
-      <GridCash>
-        <GoldenCirle>${playerCash}</GoldenCirle>
-      </GridCash>
       <GridDealerPoints>
         <PointsStyle>{dealerPoints}</PointsStyle>
       </GridDealerPoints>
       <GridPlayerPoints>
         <PointsStyle>{playerPoints}</PointsStyle>
       </GridPlayerPoints>
+    </>
+  );
+
+  return (
+    <>
+      <GridCash>
+        <GoldenCirle>${playerCash}</GoldenCirle>
+      </GridCash>
+      {gameState !== GAMESTATE.BET ? points : null}
     </>
   );
 }

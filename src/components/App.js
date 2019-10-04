@@ -289,6 +289,7 @@ export default function App() {
     dealerPoints,
     playerPoints,
     playerCash,
+    gameState,
   };
   const bettingProps = {
     handleChipsButtons,
