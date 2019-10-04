@@ -1,9 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50">
-  <g id="chip_1000" transform="matrix(.98973 0 0 .9838 -137.21 -63.39)">
-    <ellipse ry="25.15" rx="25" cy="89.85" cx="163.9" fill="#d7e915" stroke="#000" stroke-width=".53"/>
-    <circle cx="163.9" cy="89.85" r="20.42" fill="none" stroke="#fff" stroke-width="4.16" stroke-dasharray="12.48186394,12.48186394"/>
-    <g style="line-height:1.25">
-      <path style="-inkscape-font-specification:'FreeSans, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start" d="M155.56 87.02h-3.46v-1.14q2.25-.24 2.93-.65.69-.42 1.2-1.91h1.27v12.87h-1.94zm10.38 4.54v4.63h-2.05V82.96h2.05v6.7l8-6.7h2.66l-6.55 5.39 6.61 7.84h-2.42l-5.67-6.79z" aria-label="1K" font-weight="400" font-size="20.01" letter-spacing="0" word-spacing="0" font-family="FreeSans" fill="#fff" stroke-width=".5"/>
-    </g>
-  </g>
-</svg>
