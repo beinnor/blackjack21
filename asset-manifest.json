@@ -1,21 +1,23 @@
 {
   "files": {
     "main.css": "/blackjack21/static/css/main.7f22526f.chunk.css",
-    "main.js": "/blackjack21/static/js/main.e6453301.chunk.js",
-    "main.js.map": "/blackjack21/static/js/main.e6453301.chunk.js.map",
+    "main.js": "/blackjack21/static/js/main.e05ed0e3.chunk.js",
+    "main.js.map": "/blackjack21/static/js/main.e05ed0e3.chunk.js.map",
     "runtime-main.js": "/blackjack21/static/js/runtime-main.771422ac.js",
     "runtime-main.js.map": "/blackjack21/static/js/runtime-main.771422ac.js.map",
-    "static/js/2.d1748d67.chunk.js": "/blackjack21/static/js/2.d1748d67.chunk.js",
-    "static/js/2.d1748d67.chunk.js.map": "/blackjack21/static/js/2.d1748d67.chunk.js.map",
+    "static/js/2.60244a0f.chunk.js": "/blackjack21/static/js/2.60244a0f.chunk.js",
+    "static/js/2.60244a0f.chunk.js.map": "/blackjack21/static/js/2.60244a0f.chunk.js.map",
     "index.html": "/blackjack21/index.html",
-    "precache-manifest.2ff9016a808eabe3c156cd159ec796dc.js": "/blackjack21/precache-manifest.2ff9016a808eabe3c156cd159ec796dc.js",
+    "precache-manifest.4b904f737c6d1a70f591bb37563d02f2.js": "/blackjack21/precache-manifest.4b904f737c6d1a70f591bb37563d02f2.js",
     "service-worker.js": "/blackjack21/service-worker.js",
-    "static/css/main.7f22526f.chunk.css.map": "/blackjack21/static/css/main.7f22526f.chunk.css.map"
+    "static/css/main.7f22526f.chunk.css.map": "/blackjack21/static/css/main.7f22526f.chunk.css.map",
+    "static/media/chips_sprite.svg": "/blackjack21/static/media/chips_sprite.0d425635.svg",
+    "static/media/svg-cards.svg": "/blackjack21/static/media/svg-cards.ee03ae14.svg"
   },
   "entrypoints": [
     "static/js/runtime-main.771422ac.js",
-    "static/js/2.d1748d67.chunk.js",
+    "static/js/2.60244a0f.chunk.js",
     "static/css/main.7f22526f.chunk.css",
-    "static/js/main.e6453301.chunk.js"
+    "static/js/main.e05ed0e3.chunk.js"
   ]
 }
