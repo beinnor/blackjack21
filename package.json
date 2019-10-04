@@ -1,7 +1,7 @@
 {
   "name": "blackjack21",
   "version": "0.5.0",
-  "homepage": "http://beinnor.github.io/blackjack21",
+  "homepage": "https://beinnor.github.io/blackjack21",
   "private": true,
   "dependencies": {
     "react": "^16.10.1",
