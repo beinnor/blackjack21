@@ -6,6 +6,7 @@ import DealerHand from './DealerHand';
 import PlayerHand from './PlayerHand';
 import Input from './Input';
 import Output from './Output';
+import Message from './Message';
 
 import { calcScore, calcFullScore } from '../helpers/misc';
 import { getDeck, shuffle } from '../helpers/deck';
@@ -300,6 +301,7 @@ export default function App() {
   return (
     <>
       <GridContainer>
+        <Message message={message} />
         <Betting {...bettingProps} />
         <Input {...inputProps} />
         <Output {...outputProps} />
