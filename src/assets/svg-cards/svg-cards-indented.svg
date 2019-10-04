@@ -4279,5 +4279,28 @@ height="244.640" width="169.075" viewBox="0 0 169.075 244.640">
       <use transform="translate(0,207.189)" xlink:href="#g_lace2"
        x="0" y="0" width="100%" height="100%" />
     </g>
+    <g id="alternate-back" transform="translate(-333.89999,-736.02999)">
+      <use xlink:href="#base" x="335.14999" y="972.54999"
+       width="100%" height="100%" />
+      <use xlink:href="#rect3250" />
+      <use xlink:href="#rect3252" />
+      <use xlink:href="#rect3254" />
+      <use xlink:href="#rect3256" />
+    </g>
+    <g id="card-base" transform="translate(1.25, 236.52)">
+        <use xlink:href="#base" x="0" y="0" width="100%" height="100%" />
+    </g>
+    <g id="suit-club" transform="translate(7.71, 7.94)rotate(180)">
+        <use xlink:href="#club" x="0" y="0" width="100%" height="100%" />
+    </g>
+    <g id="suit-spade" transform="translate(7.71, 7.94)rotate(180)">
+        <use xlink:href="#spade" x="0" y="0" width="100%" height="100%" />
+    </g>
+    <g id="suit-heart" transform="translate(7.71, 7.94)rotate(180)">
+        <use xlink:href="#heart" x="0" y="0" width="100%" height="100%" />
+    </g>
+    <g id="suit-diamond" transform="translate(7.71, 7.94)rotate(180)">
+        <use xlink:href="#diamond" x="0" y="0" width="100%" height="100%" />
+    </g>
   </defs>
 </svg>

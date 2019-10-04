@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import cardsSprite from '../assets/svg-cards.svg';
+import cardsSprite from '../assets/svg-cards/svg-cards.svg';
 
 const CardStyle = styled.svg`
   width: auto;
