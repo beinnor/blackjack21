@@ -234,7 +234,9 @@ export default function App() {
     });
   };
 
-  const handleSplitButton = () => {};
+  const handleSplitButton = () => {
+    alert('Not implemented yet');
+  };
 
   const handleDblDownButton = () => {
     // 1: double bet
