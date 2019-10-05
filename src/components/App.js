@@ -61,25 +61,17 @@ export default function App() {
         setWinnerState(WINNER.DEALER);
       } else {
         setGameState(GAMESTATE.PLAYERTURN);
-        if (playerCash >= currentBet * 2) {
-          setButtonState({
-            dealDisabled: true,
-            hitDisabled: false,
-            standDisabled: false,
-            splitDisabled: true,
-            dblDownDisabled: false,
-            newRoundDisabled: true,
-          });
-        } else {
-          setButtonState({
-            dealDisabled: true,
-            hitDisabled: false,
-            standDisabled: false,
-            splitDisabled: true,
-            dblDownDisabled: true,
-            newRoundDisabled: true,
-          });
-        }
+        const split = playerCards[0].rank === playerCards[1].rank;
+        const dblDown = playerCash >= currentBet * 2;
+
+        setButtonState({
+          dealDisabled: true,
+          hitDisabled: false,
+          standDisabled: false,
+          splitDisabled: !split,
+          dblDownDisabled: !dblDown,
+          newRoundDisabled: true,
+        });
       }
     }
   }, [
@@ -90,6 +82,7 @@ export default function App() {
     dealerCards,
     currentBet,
     playerCash,
+    playerCards,
   ]);
 
   useEffect(() => {
