@@ -62,7 +62,7 @@ export default function App() {
       } else {
         setGameState(GAMESTATE.PLAYERTURN);
         const split = playerCards[0].rank === playerCards[1].rank;
-        const dblDown = playerCash >= currentBet * 2;
+        const dblDown = playerCash >= currentBet * 2 && playerCards.length < 3;
 
         setButtonState({
           dealDisabled: true,
@@ -220,6 +220,14 @@ export default function App() {
         newRoundDisabled: false,
       });
     }
+    setButtonState({
+      dealDisabled: true,
+      hitDisabled: false,
+      standDisabled: false,
+      splitDisabled: true,
+      dblDownDisabled: true,
+      newRoundDisabled: true,
+    });
   };
 
   const handleStandButton = () => {
@@ -266,9 +274,10 @@ export default function App() {
         dblDownDisabled: true,
         newRoundDisabled: false,
       });
+    } else {
+      // 3. change to dealerturn
+      setGameState(GAMESTATE.DEALERTURN);
     }
-    // 3. change to dealerturn
-    setGameState(GAMESTATE.DEALERTURN);
   };
 
   const handleNewRoundButton = () => {
